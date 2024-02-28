@@ -1,0 +1,21 @@
+{
+  "name": "mongodb-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "migration.js",
+  "scripts": {
+    "init": "node -e \"require('./index.js').createCollections()\"",
+    "migrate": "node -e \"require('./index.js').migrationScript()\"",
+    "aggregate": "node -e \"(async () => { await require('./index.js').aggregationScript(); })()\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^6.3.0",
+    "mongoose": "^8.2.0"
+  },
+  "devDependencies": {
+    "dotenv": "^16.4.5"
+  }
+}
