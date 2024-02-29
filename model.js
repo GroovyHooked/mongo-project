@@ -9,7 +9,7 @@ async function createCollections() {
 
     try {
         // Connexion à la base de données
-        client = await MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+        client = await MongoClient.connect(uri, {});
 
         // Récupération de la base de données
         const db = client.db("database_test");

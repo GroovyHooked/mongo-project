@@ -3,7 +3,7 @@ const MongoClient = require('mongodb').MongoClient;
 const uri = process.env.MONGODB_URI;
 
 // Création d'une instance du client MongoDB avec l'URI et les options nécessaires
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+const client = new MongoClient(uri, {});
 
 // Définition des constantes pour la base de données, la collection, la distance maximale et les coordonnées
 const DATABASE_NAME = "database_test";
