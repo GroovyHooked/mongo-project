@@ -12,7 +12,7 @@ async function createCollections() {
         client = await MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
         // Récupération de la base de données
-        const db = client.db(dbName);
+        const db = client.db("database_test");
 
         // Création de la collection "Users" avec un schéma de validation
         // Le schéma de validation exige que chaque document contienne les champs "type" et "coordinates"
@@ -22,14 +22,21 @@ async function createCollections() {
             validator: {
                 $jsonSchema: {
                     bsonType: "object",
-                    required: ["type", "coordinates"],
+                    required: ["name", "location"],
                     properties: {
-                        type: { enum: ["Point"] },
-                        coordinates: {
-                            bsonType: "array",
-                            items: { bsonType: "number" },
-                            minItems: 2,
-                            maxItems: 2,
+                        name: { bsonType: "string" },
+                        location: {
+                            bsonType: "object",
+                            required: ["type", "coordinates"],
+                            properties: {
+                                type: { enum: ["Point"] },
+                                coordinates: {
+                                    bsonType: "array",
+                                    items: { bsonType: "number" },
+                                    minItems: 2,
+                                    maxItems: 2,
+                                },
+                            },
                         },
                     },
                 },
